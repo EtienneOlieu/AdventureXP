@@ -1,29 +1,50 @@
 package com.example.adventure.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
-public class Krav {
+@Setter
+@Getter
+public class Requirements {
 
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long Id;
 
+    @Column
     public int minimumAttendants;
+
+    @Column
     public int maximumAttendants;
+
+    @Column
     public int alcoholLevel;
+
+    @Column
     public int maxWeight;
+
+    @Column
     public int minimumHeight;
+
+    @Column
     public int maximumHeight;
+
+    @Column
     public int minimumAge;
+
+    @Column
     public int maximumAge;
+
+    @Column
     public String requirementsDescrip;
 
 
-
+    public Requirements() {
+        super();
+    }
 }
