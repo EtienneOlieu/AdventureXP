@@ -19,9 +19,9 @@ public class ActivityJPA implements ActivityService{
 
     @Override
     public Set<Activity> findAll() {
-        Set<Activity> set = new HashSet<>();
-        activityRepository.findAll().forEach(set::add);
-        return set;
+        Set<Activity> activities = new HashSet<>();
+        activityRepository.findAll().forEach(activities::add);
+        return activities;
     }
 
     @Override
@@ -31,16 +31,18 @@ public class ActivityJPA implements ActivityService{
 
     @Override
     public void delete(Activity object) {
+        activityRepository.delete(object);
 
     }
 
     @Override
     public void deleteById(Long aLong) {
+        activityRepository.deleteById(aLong);
 
     }
 
     @Override
     public Optional<Activity> findById(Long aLong) {
-        return Optional.empty();
+        return activityRepository.findById(aLong);
     }
 }
