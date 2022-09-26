@@ -9,17 +9,23 @@ import javax.persistence.*;
 @Entity
 @Setter
 @Getter
+@Table(name = "Requirements")
+// Alt udkommenteret kode er til senere udvidelse af db
+//@SecondaryTable(name = "Req_age", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
+//@SecondaryTable(name = "Req_height", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
+//@SecondaryTable(name = "Req_attendants", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
 public class Requirements {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "req_id")
     public Long Id;
 
-    @Column
+    @Column//(name = "minimumAttendants", table = "Req_attendants")
     public int minimumAttendants;
 
-    @Column
+    @Column//(name = "maximumAttendants", table = "Req_attendants")
     public int maximumAttendants;
 
     @Column
@@ -28,16 +34,16 @@ public class Requirements {
     @Column
     public int maxWeight;
 
-    @Column
+    @Column//(name = "minimumHeight", table = "Req_height")
     public int minimumHeight;
 
-    @Column
+    @Column//(name = "maximumHeight", table = "Req_height")
     public int maximumHeight;
 
-    @Column
+    @Column//(name = "minimumAge", table = "Req_age")
     public int minimumAge;
 
-    @Column
+    @Column//(name = "maximumAge", table = "Req_age")
     public int maximumAge;
 
     @Column
