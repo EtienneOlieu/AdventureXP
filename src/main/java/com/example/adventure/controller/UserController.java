@@ -1,12 +1,11 @@
 package com.example.adventure.controller;
 
+import com.example.adventure.exception.ResourceNotFoundException;
 import com.example.adventure.model.User;
 import com.example.adventure.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -30,6 +29,22 @@ public class UserController {
         uService.save(name);
     return new ResponseEntity<>(uService.findAll(), HttpStatus.OK);
     }
+
+    @DeleteMapping("/deleteuser")
+    public ResponseEntity<Set<User>> deleteUserById(User name){
+        uService.delete(name);
+        return new ResponseEntity<>(uService.findAll(), HttpStatus.OK);
+
+    }
+
+    @PutMapping("/updateuser")
+    public ResponseEntity<Set<User>> updateUser(Long id, User name){
+        User userUpdate = uService.findById(id).orElseThrow(() -> new ResourceNotFoundException("No one exists with this id: " + id));
+        userUpdate.setName(name.getName());
+        uService.save(userUpdate);
+        return new ResponseEntity<>(uService.findAll(), HttpStatus.OK);
+    }
+
 
 
 
