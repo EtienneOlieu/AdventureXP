@@ -26,10 +26,10 @@ public class Requirements {
     @Column(name = "req_id")
     public Long Id;
 
-    @Column//(name = "minimumAttendants", table = "Req_attendants")
+    @Column//(name = "attendantsAmount", table = "Req_attendants")
     public int minimumAttendants;
 
-    @Column//(name = "maximumAttendants", table = "Req_attendants")
+    @Column//(name = "attendantsAmount", table = "Req_attendants")
     public int maximumAttendants;
 
     @Column
@@ -38,16 +38,16 @@ public class Requirements {
     @Column
     public int maxWeight;
 
-    @Column//(name = "minimumHeight", table = "Req_height")
+    @Column//(name = "height", table = "Req_height")
     public int minimumHeight;
 
-    @Column//(name = "maximumHeight", table = "Req_height")
+    @Column//(name = "height", table = "Req_height")
     public int maximumHeight;
 
-    @Column//(name = "minimumAge", table = "Req_age")
+    @Column//(name = "age", table = "Req_age")
     public int minimumAge;
 
-    @Column//(name = "maximumAge", table = "Req_age")
+    @Column//(name = "age", table = "Req_age")
     public int maximumAge;
 
     @Column
