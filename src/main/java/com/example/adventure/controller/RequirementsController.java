@@ -39,13 +39,13 @@ public class RequirementsController {
     }
 
     @DeleteMapping("/deleteRequirements")
-    public ResponseEntity<Set<Requirements>> deleteCourse (Requirements requirements){
+    public ResponseEntity<Set<Requirements>> deleteReqs (Requirements requirements){
         reqJPA.delete(requirements);
         return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.OK);
     }
 
-    @PutMapping("/editRequirements")
-    public ResponseEntity<Set<Requirements>> editUser(Long id, Requirements requirements){
+    @PatchMapping("/editRequirements")
+    public ResponseEntity<Set<Requirements>> editReqs(Long id, Requirements requirements){
         Optional<Requirements> updated = reqJPA.findById(id);
         if(updated.isPresent()){
             reqJPA.save(requirements);
