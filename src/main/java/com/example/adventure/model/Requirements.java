@@ -23,7 +23,7 @@ public class Requirements {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "req_id")
+    @Column(name = "id")
     public Long Id;
 
     @Column//(name = "attendantsAmount", table = "Req_attendants")
