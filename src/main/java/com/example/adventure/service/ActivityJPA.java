@@ -4,6 +4,7 @@ import com.example.adventure.model.Activity;
 import com.example.adventure.repository.ActivityRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,7 +19,9 @@ public class ActivityJPA implements ActivityService{
 
     @Override
     public Set<Activity> findAll() {
-        return null;
+        Set<Activity> set = new HashSet<>();
+        activityRepository.findAll().forEach(set::add);
+        return set;
     }
 
     @Override
