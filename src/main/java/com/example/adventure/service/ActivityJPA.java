@@ -4,6 +4,7 @@ import com.example.adventure.model.Activity;
 import com.example.adventure.repository.ActivityRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,7 +19,9 @@ public class ActivityJPA implements ActivityService{
 
     @Override
     public Set<Activity> findAll() {
-        return null;
+        Set<Activity> activities = new HashSet<>();
+        activityRepository.findAll().forEach(activities::add);
+        return activities;
     }
 
     @Override
@@ -28,16 +31,18 @@ public class ActivityJPA implements ActivityService{
 
     @Override
     public void delete(Activity object) {
+        activityRepository.delete(object);
 
     }
 
     @Override
     public void deleteById(Long aLong) {
+        activityRepository.deleteById(aLong);
 
     }
 
     @Override
     public Optional<Activity> findById(Long aLong) {
-        return Optional.empty();
+        return activityRepository.findById(aLong);
     }
 }
