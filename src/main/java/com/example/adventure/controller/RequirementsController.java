@@ -44,11 +44,15 @@ public class RequirementsController {
         return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.OK);
     }
 
-    @PatchMapping("/editRequirements")
-    public ResponseEntity<Set<Requirements>> editReqs(Long id, Requirements requirements){
+    @PatchMapping("/editRequirements/{id}")
+    public ResponseEntity<Set<Requirements>> editReqs(@PathVariable Long id,@RequestBody Requirements requirements){
         Optional<Requirements> updated = reqJPA.findById(id);
+
+        System.out.println(updated.get().alcoholLevel);
+
         if(updated.isPresent()){
             reqJPA.save(requirements);
+            System.out.println(updated.get().alcoholLevel);
             return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.OK);
         }else{
             return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.NOT_FOUND);
