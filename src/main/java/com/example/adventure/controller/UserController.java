@@ -31,8 +31,8 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteuser")
-    public ResponseEntity<Set<User>> deleteUserById(User name){
-        uService.delete(name);
+    public ResponseEntity<Set<User>> deleteUserById(User id){
+        uService.delete(id);
         return new ResponseEntity<>(uService.findAll(), HttpStatus.OK);
 
     }
