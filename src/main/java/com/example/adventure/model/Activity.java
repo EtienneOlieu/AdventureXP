@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,6 +20,7 @@ public class Activity {
     private String name;
     private String description;
     private int price;
+
 
     @ManyToOne
     @JsonBackReference
