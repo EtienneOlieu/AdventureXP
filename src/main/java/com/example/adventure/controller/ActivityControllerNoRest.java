@@ -8,6 +8,11 @@ public class ActivityControllerNoRest {
 
     @GetMapping("/show-activity-list")
     public String showActivityList(){
+        return "ActivityList";
+    }
+
+    @GetMapping("/show-activity-list-admin")
+    public String showActivityListAdmin(){
         return "ActivityListAdmin";
     }
 }
