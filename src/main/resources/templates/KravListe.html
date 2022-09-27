@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Krav Liste</title>
-    <link rel="stylesheet" th:href="@{../stylesheets/Activity.css}" href="../stylesheets/Activity.css">
+    <link rel="stylesheet" th:href="@{../stylesheets/temp.css}" href="../stylesheets/temp.css">
 </head>
 <body>
-<span th:if="${requirements.getAlcoholLevel() != 99 }">Maks. Promille: <span th:text="${requirements.getAlcoholLevel()}"></span>%</br></span>
 
+<span th:if="${requirements.getAlcoholLevel() != 99 }">Maks. Promille: <span th:text="${requirements.getAlcoholLevel()}"></span>%</br></span>
 <span th:if="${requirements.getMaximumAttendants() != 0}">Højeste antal deltagere: <span th:text="${requirements.getMaximumAttendants()}"></span></br></span>
 <span th:if="${requirements.getMinimumAttendants() != 0}"> Mindste antal deltagere: <span th:text="${requirements.getMinimumAttendants()}"></span></br></span>
 <span th:if="${requirements.getMaxWeight() != 0}"> Maksimal vægt: <span th:text="${requirements.getMaxWeight()}"></span></br></span>
@@ -16,8 +16,6 @@
 <span th:if="${requirements.getMaximumAge() != 0}">Maksimal alder: <span th:text="${requirements.getMaximumAge()}"></span></br></span>
 <span th:if="${requirements.getMinimumAge() != 0}">Minimums alder: <span th:text="${requirements.getMinimumAge()}"></span></br></span>
 <span th:if="${requirements.getRequirementsDescrip() != null}">Yderligere hensyn: <span th:text="${requirements.getRequirementsDescrip()}"></br></span></span>
-
-
 
 </body>
 </html>
