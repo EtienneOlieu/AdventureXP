@@ -1,4 +1,3 @@
-
 package com.example.adventure.controller;
 
 import com.example.adventure.model.Event;
@@ -9,7 +8,9 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -20,13 +21,6 @@ public class CalendarController {
     @Autowired
     EventRepository er;
 
-    @RequestMapping("/api")
-    @ResponseBody
-    String home() {
-        return "Welcome!";
-    }
-    @GetMapping("/")
-    public String test(){ return "calendar";}
 
     @GetMapping("/api/events")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -42,6 +36,19 @@ public class CalendarController {
         Event e = new Event();
         e.setStart(params.start);
         e.setEnd(params.end);
+        e.setText(params.text);
+
+        er.save(e);
+
+        return e;
+    }
+
+    @PostMapping("/api/events/update")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @Transactional
+    Event updateEvent(@RequestBody EventUpdateParams params) {
+
+        Event e = er.findById(params.id).get();
         e.setText(params.text);
 
         er.save(e);
@@ -87,6 +94,11 @@ public class CalendarController {
         public Long id;
         public LocalDateTime start;
         public LocalDateTime end;
+        public Long resource;
+    }
+    public static class EventUpdateParams {
+        public Long id;
+        public String text;
         public Long resource;
     }
 

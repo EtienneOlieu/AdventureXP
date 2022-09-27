@@ -55,4 +55,5 @@ public class ActivityController {
         activityJPA.deleteById(id);
         return new ResponseEntity<>("Aktivitet med id " + id + " blev slettet", HttpStatus.OK);
     }
+
 }
