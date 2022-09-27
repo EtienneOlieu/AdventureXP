@@ -44,18 +44,49 @@ public class RequirementsController {
         return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.OK);
     }
 
-    @PatchMapping("/editRequirements/{id}")
-    public ResponseEntity<Set<Requirements>> editReqs(@PathVariable Long id,@RequestBody Requirements requirements){
-        Optional<Requirements> updated = reqJPA.findById(id);
+    @PatchMapping("/editRequirements")
+    public ResponseEntity<Requirements> editReqs(@RequestBody Requirements requirements){
 
-        System.out.println(updated.get().alcoholLevel);
+        Optional<Requirements> reqTemp = reqJPA.findById(requirements.getId());
 
-        if(updated.isPresent()){
+        System.out.println(requirements.alcoholLevel);
+
+        if(reqTemp.isPresent()){
+            if(requirements.getId() == null) {
+                requirements.setId(requirements.getId());
+            }
+            if(requirements.getMinimumAttendants() == 0) {
+                requirements.setMinimumAttendants(reqTemp.get().minimumAttendants);
+            }
+            if(requirements.getMaximumAttendants() == 0) {
+                requirements.setMaximumAttendants(reqTemp.get().maximumAttendants);
+            }
+            if(requirements.getAlcoholLevel() == 0) {
+                requirements.setAlcoholLevel(reqTemp.get().alcoholLevel);
+            }
+            if(requirements.getMaxWeight() == 0){
+                requirements.setMaxWeight(reqTemp.get().maxWeight);
+            }
+            if(requirements.getMinimumHeight() == 0) {
+                requirements.setMinimumHeight(reqTemp.get().minimumHeight);
+            }
+            if(requirements.getMaximumHeight() == 0) {
+                requirements.setMaximumHeight(reqTemp.get().maximumHeight);
+            }
+            if(requirements.getMinimumAge() == 0) {
+                requirements.setMinimumAge(reqTemp.get().minimumAge);
+            }
+            if(requirements.getMaximumAge() == 0) {
+                requirements.setMaximumAge(reqTemp.get().maximumAge);
+            }
+            if(requirements.getRequirementsDescrip() == null) {
+                requirements.setRequirementsDescrip(reqTemp.get().requirementsDescrip);
+            }
             reqJPA.save(requirements);
-            System.out.println(updated.get().alcoholLevel);
-            return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.OK);
+            System.out.println(requirements.alcoholLevel);
+            return new ResponseEntity<>(requirements,HttpStatus.OK);
         }else{
-            return new ResponseEntity<>(reqJPA.findAll(),HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(requirements,HttpStatus.NOT_FOUND);
         }
     }
 
