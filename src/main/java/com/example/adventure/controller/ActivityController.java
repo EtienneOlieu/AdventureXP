@@ -35,6 +35,12 @@ public class ActivityController {
         return new ResponseEntity<>(allActivities, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Activity> getActivityById(@PathVariable Long id){
+        Optional<Activity> activity = activityJPA.findById(id);
+        return new ResponseEntity<>(activity.get(), HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateActivity(@PathVariable Activity activity){
         Optional<Activity> activityToUpdate = activityJPA.findById(activity.getId());
