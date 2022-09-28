@@ -43,6 +43,18 @@ public class CalendarController {
         return e;
     }
 
+    @PostMapping("/api/events/delete")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @Transactional
+    Event DeleteEvent(@RequestBody EventUpdateParams params) {
+
+        Event e = er.findById(params.id).get();
+        System.out.println(e.getText());
+        er.deleteById(params.id);
+
+        return e;
+    }
+
     @PostMapping("/api/events/update")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
@@ -80,17 +92,6 @@ public class CalendarController {
         Event e = er.findById(params.id).get();
         e.setColor(params.color);
         er.save(e);
-
-        return e;
-    }
-
-    @PostMapping("/api/events/delete")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @Transactional
-    Event DeleteEvent(@RequestBody EventUpdateParams params) {
-
-        Event e = er.findById(params.id).get();
-        er.delete(e);
 
         return e;
     }
