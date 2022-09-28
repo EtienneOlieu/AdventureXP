@@ -84,6 +84,18 @@ public class CalendarController {
         return e;
     }
 
+    @PostMapping("/api/events/delete")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @Transactional
+    Event DeleteEvent(@RequestBody EventUpdateParams params) {
+
+        Event e = er.findById(params.id).get();
+        er.delete(e);
+
+        return e;
+    }
+
+
     public static class EventCreateParams {
         public LocalDateTime start;
         public LocalDateTime end;

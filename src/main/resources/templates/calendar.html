@@ -126,7 +126,13 @@
     dp.onEventDeleted = args => {
         // API call to delete the event on the server side
         // ...
-        dp.message("Deleted");
+        DayPilot.Http.ajax({
+            url: '/api/events/delete',
+            data: args.data,
+            success: function (ajax) {
+                dp.message("Deleted");
+            }
+        });
     };
     dp.onBeforeEventRender = function(args) {
         args.data.barColor = args.data.color;
