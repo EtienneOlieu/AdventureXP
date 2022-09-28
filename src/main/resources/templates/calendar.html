@@ -83,6 +83,42 @@
             }
         });
     };
+    dp.onEventClick = function (args) {
+        var form = [
+            { name: "Skriv opdatering til booking", id: "text" }
+        ];
+        var data = args.e.data;
+        DayPilot.Modal.form(form, data).then(function(modal) {
+            if (modal.canceled) {
+                return;
+            }
+            DayPilot.Http.ajax({
+                url: '/api/events/update',
+                data: modal.result,
+                success: function (ajax) {
+                    dp.events.update(ajax.data);
+                    dp.message("Booking tekst opdateret");
+                }
+            });
+        });
+    };
+    dp.eventDeleteHandling = "Update";
+    dp.onEventDelete = args => {
+        if (!confirm("Er du sikker på at du vil fjerne denne booking?")){
+            args.preventDefault();
+        }
+    };
+    dp.onEventDeleted = args => {
+        // API call to delete the event on the server side
+        // ...
+        DayPilot.Http.ajax({
+            url: '/api/events/delete',
+            data: args.e.data,
+            success: function (ajax) {
+                dp.message("Booking slettet");
+            }
+        });
+    };
 
     dp.onEventResize = function (args) {
         var params = {
@@ -131,8 +167,6 @@
                 color: "#cc0000",
                 onClick: function(args) { updateColor(args.source, args.item.color); }
             },
-            {text:"Opdater", onclick: function() { dp.events.edit(this.source); } },
-            {text:"Slet", onclick: function() { dp.events.remove(this.source); } },
 
         ]
     });
