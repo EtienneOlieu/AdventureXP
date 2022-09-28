@@ -18,7 +18,7 @@ import java.util.Set;
 //@SecondaryTable(name = "Req_age", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
 //@SecondaryTable(name = "Req_height", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
 //@SecondaryTable(name = "Req_attendants", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
-public class Requirements {
+public class Requirement {
 
 
     @Id
@@ -59,7 +59,7 @@ public class Requirements {
     private Set<Activity> activities = new HashSet<>();
 
 
-    public Requirements() {
+    public Requirement() {
         super();
     }
 }
