@@ -53,7 +53,7 @@ public class Requirement {
     @Column
     public String requirementsDescrip;
 
-    @OneToMany(mappedBy = "requirements")
+    @OneToMany(mappedBy = "requirement")
     @JsonBackReference
     @EqualsAndHashCode.Exclude
     private Set<Activity> activities = new HashSet<>();
