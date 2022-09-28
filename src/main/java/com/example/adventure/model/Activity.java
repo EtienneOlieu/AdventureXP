@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,7 +24,7 @@ public class Activity {
     @ManyToOne
     @JsonBackReference
     @EqualsAndHashCode.Exclude
-    private Requirements requirements;
+    private Requirement requirement;
 
 
 

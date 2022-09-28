@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/api/v1/equipment")
 public class EquipmentController {
     private EquipmentService equipmentService;
 
@@ -18,22 +19,22 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
-@GetMapping("/equipment")
+@GetMapping
     public ResponseEntity<Set<Equipment>>getEquipment(){
         return new ResponseEntity<>(equipmentService.findAll(), HttpStatus.OK);
 }
-@PostMapping("/addequipment")
+@PostMapping
     public ResponseEntity<Set<Equipment>>addEquipment(Equipment name){
         equipmentService.save(name);
         return new ResponseEntity<>(equipmentService.findAll(), HttpStatus.OK);
 }
-@DeleteMapping("/deleteequipment")
-    public ResponseEntity<Set<Equipment>>deleteEquipmentById(Equipment id){
+@DeleteMapping("/{id}")
+    public ResponseEntity<Set<Equipment>>deleteEquipmentById(@PathVariable Equipment id){
         equipmentService.delete(id);
         return new ResponseEntity<>(equipmentService.findAll(), HttpStatus.OK);
 }
-@PutMapping("/updateequipment")
-    public ResponseEntity<Set<Equipment>>updateEquipment(Long id, Equipment name){
+@PutMapping("/{id}")
+    public ResponseEntity<Set<Equipment>>updateEquipment(@PathVariable Long id, Equipment name){
         Equipment equipmentUpdate = equipmentService.findById(id).orElseThrow(() -> new ResourceNotFoundException("No one exists with this id: " + id));
         equipmentUpdate.setName(name.getName());
         equipmentService.save(equipmentUpdate);
