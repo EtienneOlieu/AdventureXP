@@ -87,14 +87,19 @@
         var form = [
             { name: "Text", id: "text" }
         ];
-
         var data = args.e.data;
-
         DayPilot.Modal.form(form, data).then(function(modal) {
             if (modal.canceled) {
                 return;
             }
-            console.log("Updated data", modal.result);
+            DayPilot.Http.ajax({
+                url: '/api/events/update',
+                data: modal.result,
+                success: function (ajax) {
+                    dp.events.update(ajax.data);
+                    dp.message("Bookingtid opdateret");
+                }
+            });
         });
     };
 
@@ -111,6 +116,17 @@
                 dp.message("Bookingtid rykket");
             }
         });
+    };
+    dp.eventDeleteHandling = "Update";
+    dp.onEventDelete = args => {
+        if (!confirm("Do you really want to delete this event?")){
+            args.preventDefault();
+        }
+    };
+    dp.onEventDeleted = args => {
+        // API call to delete the event on the server side
+        // ...
+        dp.message("Deleted");
     };
     dp.onBeforeEventRender = function(args) {
         args.data.barColor = args.data.color;

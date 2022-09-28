@@ -70,3 +70,8 @@ a {
 .calendar_default_corner{
     display:none;
 }
+.calendar_default_event_delete {
+    position: absolute !important;
+    bottom: 1% !important;
+    right: 15% !important;
+}

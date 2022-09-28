@@ -49,6 +49,7 @@ public class CalendarController {
     Event updateEvent(@RequestBody EventUpdateParams params) {
 
         Event e = er.findById(params.id).get();
+        System.out.println(params.text);
         e.setText(params.text);
 
         er.save(e);
