@@ -97,14 +97,6 @@
             console.log("Updated data", modal.result);
         });
     };
-        DayPilot.Http.ajax({
-            url: '/api/events/update',
-            data: params,
-            success: function (ajax) {
-                dp.message("Booking opdateret");
-            }
-        });
-    };
 
     dp.onEventResize = function (args) {
         var params = {
