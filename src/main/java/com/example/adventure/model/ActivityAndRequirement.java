@@ -1,10 +1,12 @@
 package com.example.adventure.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.Column;
 
 @Data
+@ToString
 public class ActivityAndRequirement {
 
     private Long activityId;

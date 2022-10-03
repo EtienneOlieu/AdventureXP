@@ -118,7 +118,9 @@ public class ActivityController {
         @PutMapping()
         @CrossOrigin
         public ResponseEntity<?> updateActivity(@RequestBody ActivityAndRequirement activityAndRequirement){
-            Optional<Activity> activityToUpdate = activityJPA.findById(activityAndRequirement.getActivityId());
+            long activityId = activityAndRequirement.getActivityId().longValue();
+            Optional<Activity> activity3 = activityJPA.findById(activityId);
+            Optional<Activity> activityToUpdate = activityJPA.findById(activityId);
             Optional<Requirement> requirementToUpdate = requirementJPA.findById(activityAndRequirement.getRequirementId());
             if (activityToUpdate.isPresent() && requirementToUpdate.isPresent()) {
                 Requirement requirement = requirementToUpdate.get();
@@ -141,9 +143,7 @@ public class ActivityController {
                 activity.setDescription(activityAndRequirement.getDescription());
                 activity.setPrice(activityAndRequirement.getPrice());
                 activity.setRequirement(savedRequirement);
-                System.out.println("Activity before save" + activity);
                 Activity savedActivity = activityJPA.save(activity);
-                System.out.println("Activity after save" + savedActivity);
 
                 if (savedActivity == null) {
                     return new ResponseEntity<>("Fejl i opdatering af aktivitet", HttpStatus.BAD_REQUEST);
