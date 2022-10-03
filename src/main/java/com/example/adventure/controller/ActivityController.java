@@ -53,8 +53,8 @@ public class ActivityController {
             activityAndRequirement.setName(activity.getName());
             activityAndRequirement.setDescription(activity.getDescription());
             activityAndRequirement.setPrice(activity.getPrice());
-            activityAndRequirement.setId(activity.getId());
-            activityAndRequirement.setName(activity.getName());
+            activityAndRequirement.setId(requirement.getId());
+            activityAndRequirements.add(activityAndRequirement);
         });
         return new ResponseEntity<>(activityAndRequirements, HttpStatus.OK);
     }
