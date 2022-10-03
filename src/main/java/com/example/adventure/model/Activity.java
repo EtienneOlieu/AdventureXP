@@ -21,6 +21,7 @@ public class Activity {
     private int price;
 
 
+
     @ManyToOne
     @JsonBackReference
     @EqualsAndHashCode.Exclude
