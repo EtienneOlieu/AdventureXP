@@ -20,9 +20,7 @@ public class Activity {
     private String description;
     private int price;
 
-
-
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonBackReference
     @EqualsAndHashCode.Exclude
     private Requirement requirement;

@@ -46,15 +46,26 @@ public class ActivityController {
     public ResponseEntity<List<ActivityAndRequirement>> getAllActivities(){
         Set<Activity> allActivities = activityJPA.findAll();
         List<ActivityAndRequirement> activityAndRequirements = new ArrayList<>();
+
         allActivities.forEach(activity -> {
             ActivityAndRequirement activityAndRequirement = new ActivityAndRequirement();
-            Long id = activity.getId();
+            Long id = activity.getRequirement().getId();
             Requirement requirement = requirementJPA.findById(id).get();
+            activityAndRequirement.setActivityId(activity.getId());
             activityAndRequirement.setName(activity.getName());
             activityAndRequirement.setDescription(activity.getDescription());
             activityAndRequirement.setPrice(activity.getPrice());
-            activityAndRequirement.setId(activity.getId());
-            activityAndRequirement.setName(activity.getName());
+            activityAndRequirement.setRequirementId(id);
+            activityAndRequirement.setMinimumAttendants(requirement.getMinimumAttendants());
+            activityAndRequirement.setMaximumAttendants(requirement.getMaximumAttendants());
+            activityAndRequirement.setAlcoholLevel(requirement.getAlcoholLevel());
+            activityAndRequirement.setMaxWeight(requirement.getMaxWeight());
+            activityAndRequirement.setMinimumHeight(requirement.getMinimumHeight());
+            activityAndRequirement.setMaximumHeight(requirement.getMaximumHeight());
+            activityAndRequirement.setMinimumAge(requirement.getMinimumAge());
+            activityAndRequirement.setMaximumAge(requirement.getMaximumAge());
+            activityAndRequirement.setRequirementsDescrip(requirement.getRequirementsDescrip());
+            activityAndRequirements.add(activityAndRequirement);
         });
         return new ResponseEntity<>(activityAndRequirements, HttpStatus.OK);
     }
@@ -62,7 +73,7 @@ public class ActivityController {
     @GetMapping("/{id}")
     public ResponseEntity<Activity> getActivityById(@PathVariable Long id){
         Optional<Activity> activity = activityJPA.findById(id);
-        System.out.println(activity.get().getName());
+        System.out.println(activity.get().getRequirement().getId());
         return new ResponseEntity<>(activity.get(), HttpStatus.OK);
     }
 
