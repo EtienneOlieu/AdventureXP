@@ -34,6 +34,8 @@ public class RequirementController {
         }
     }
 
+
+
     @PostMapping
     public ResponseEntity<Requirement> addCourse (Requirement newReqs){
         return new ResponseEntity<>(reqJPA.save(newReqs),HttpStatus.OK);

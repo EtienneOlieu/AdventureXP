@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class RequirementControllerNoRest {
@@ -30,6 +31,17 @@ public class RequirementControllerNoRest {
                 model.addAttribute("requirements", requirements.get());
                 return "/KravListe";
             }
+        }
+        return "/error";
+    }
+
+    @GetMapping("/show-all-requirement")
+    public String showAllRequirement(Model model){
+        Set<Activity> activities = activityService.findAll();
+        if (!activities.isEmpty()) {
+                model.addAttribute("activities", activities);
+
+                return "/ActivityList";
         }
         return "/error";
     }
