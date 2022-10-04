@@ -15,14 +15,14 @@ public class ActivityAndRequirement {
     private int price;
 
     private Long requirementId;
-    public int minimumAttendants;
-    public int maximumAttendants;
-    public int alcoholLevel;
-    public int maxWeight;
-    public int minimumHeight;
-    public int maximumHeight;
-    public int minimumAge;
-    public int maximumAge;
-    public String requirementsDescrip;
+    private int minimumAttendants;
+    private int maximumAttendants;
+    private int alcoholLevel;
+    private int maxWeight;
+    private int minimumHeight;
+    private int maximumHeight;
+    private int minimumAge;
+    private int maximumAge;
+    private String requirementsDescrip;
 
 }
