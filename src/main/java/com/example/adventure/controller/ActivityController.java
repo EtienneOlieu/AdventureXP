@@ -153,9 +153,10 @@ public class ActivityController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteActivity(@PathVariable Long id){
+    @CrossOrigin
+    public ResponseEntity<?> deleteActivity(@PathVariable Long id){
         activityJPA.deleteById(id);
-        return new ResponseEntity<>("Aktivitet med id " + id + " blev slettet", HttpStatus.OK);
+        return new ResponseEntity<>(new Activity(), HttpStatus.OK);
     }
 
 }
