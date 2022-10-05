@@ -17,7 +17,6 @@ import java.util.Optional;
 public class ShiftController {
 
     private ShiftService shiftService;
-
     private ActivityService activityService;
 
     public ShiftController(ShiftService shiftService, ActivityService activityService) {
@@ -34,20 +33,19 @@ public class ShiftController {
     @PostMapping
     @CrossOrigin
     public ResponseEntity<?> saveShift(@RequestBody ShiftAndActivity shiftAndActivity){
-        Shift savedShift = new Shift();
 
         Optional<Activity> activity = activityService.findById(shiftAndActivity.getActivityId());
 
         if (activity.isPresent()){
-            System.out.println("Saved activity " + activity);
             Shift shift = new Shift();
-            shift.setDate(shiftAndActivity.getDate());
+            shift.setEmployeeName(shiftAndActivity.getEmployeeName());
             shift.setStartTime(shiftAndActivity.getStartTime());
             shift.setEndTime(shiftAndActivity.getEndTime());
             shift.setActivity(activity.get());
-            savedShift = shiftService.save(shift);
+            Shift savedShift = shiftService.save(shift);
+            return new ResponseEntity<>(savedShift, HttpStatus.OK);
         }
-        return new ResponseEntity<>(savedShift, HttpStatus.OK);
+        return new ResponseEntity<>(new Shift(), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
