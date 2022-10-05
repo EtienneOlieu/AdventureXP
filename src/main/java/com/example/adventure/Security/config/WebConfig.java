@@ -1,4 +1,4 @@
-package com.example.adventure;
+package com.example.adventure.Security.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;

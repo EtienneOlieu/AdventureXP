@@ -25,11 +25,11 @@ public class UserController {
     }
 
     //Add user and save in DB
-    @PostMapping
-    public ResponseEntity<Set<User>>addUser(User name){
-        uService.save(name);
-    return new ResponseEntity<>(uService.findAll(), HttpStatus.OK);
-    }
+//    @PostMapping
+//    public ResponseEntity<Set<User>>addUser(User name){
+//        uService.save(name);
+//    return new ResponseEntity<>(uService.findAll(), HttpStatus.OK);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Set<User>> deleteUserById(@PathVariable User id){

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,9 @@ public class ActivityController {
         return new ResponseEntity<>(savedActivity, HttpStatus.OK);
     }
 
+    @PermitAll
     @GetMapping
+    @CrossOrigin
     public ResponseEntity<List<ActivityAndRequirement>> getAllActivities(){
         Set<Activity> allActivities = activityJPA.findAll();
         List<ActivityAndRequirement> activityAndRequirements = new ArrayList<>();
