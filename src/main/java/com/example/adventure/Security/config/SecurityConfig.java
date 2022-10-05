@@ -1,4 +1,4 @@
-package com.example.adventure.Security;
+package com.example.adventure.Security.config;
 import com.example.adventure.Security.jwt.AuthEntryPointJwt;
 import com.example.adventure.Security.jwt.AuthTokenFilter;
 import com.example.adventure.service.UserDetailsServiceImpl;
