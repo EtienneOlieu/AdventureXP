@@ -2,14 +2,12 @@ package com.example.adventure.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
 
 @Entity
 public class Event {
@@ -25,6 +23,13 @@ public class Event {
 	LocalDateTime end;
 
 	String color;
+
+	String medarbejder;
+
+	@ManyToOne()
+	@JsonBackReference
+	@EqualsAndHashCode.Exclude
+	private Activity activity;
 
 	public Long getId() {
 		return id;
@@ -61,4 +66,12 @@ public class Event {
 	public String getColor() { return color; }
 
 	public void setColor(String color) { this.color = color; }
+
+	public String getMedarbejder() {
+		return medarbejder;
+	}
+
+	public void setMedarbejder(String medarbejder) {
+		this.medarbejder = medarbejder;
+	}
 }
