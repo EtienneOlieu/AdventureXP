@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.PermitAll;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
@@ -21,14 +22,17 @@ public class CalendarController {
     @Autowired
     EventRepository er;
 
-
-    @GetMapping("/api/events")
+@PermitAll
+@CrossOrigin
+    @GetMapping("/api/v1/events")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     Iterable<Event> events(@RequestParam("start") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime start, @RequestParam("end") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime end) {
         return er.findBetween(start, end);
     }
 
-    @PostMapping("/api/events/create")
+    @PermitAll
+    @CrossOrigin
+    @PostMapping("/api/v1/events/create")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Event createEvent(@RequestBody EventCreateParams params) {
@@ -42,8 +46,9 @@ public class CalendarController {
 
         return e;
     }
-
-    @PostMapping("/api/events/delete")
+    @PermitAll
+    @CrossOrigin
+    @PostMapping("/api/v1/events/delete")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Event DeleteEvent(@RequestBody EventUpdateParams params) {
@@ -54,8 +59,9 @@ public class CalendarController {
 
         return e;
     }
-
-    @PostMapping("/api/events/update")
+    @PermitAll
+    @CrossOrigin
+    @PostMapping("/api/v1/events/update")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Event updateEvent(@RequestBody EventUpdateParams params) {
@@ -68,8 +74,9 @@ public class CalendarController {
 
         return e;
     }
-
-    @PostMapping("/api/events/move")
+    @PermitAll
+    @CrossOrigin
+    @PostMapping("/api/v1/events/move")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Event moveEvent(@RequestBody EventMoveParams params) {
@@ -83,8 +90,9 @@ public class CalendarController {
 
         return e;
     }
-
-    @PostMapping("/api/events/setColor")
+    @PermitAll
+    @CrossOrigin
+    @PostMapping("/api/v1/events/setColor")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Event setColor(@RequestBody SetColorParams params) {

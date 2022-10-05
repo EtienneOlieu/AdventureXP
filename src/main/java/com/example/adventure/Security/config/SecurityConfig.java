@@ -56,8 +56,7 @@ UserDetailsServiceImpl userDetailsService;
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
+                .authorizeRequests().antMatchers("/api/v1/**").permitAll()
                 .antMatchers("/api/v1/**").permitAll()
                 .anyRequest().authenticated();
 
