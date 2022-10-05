@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,8 +28,9 @@ public class Activity {
     @EqualsAndHashCode.Exclude
     private Requirement requirement;
 
-
-
-
+    @OneToMany (mappedBy = "activity")
+    @JsonBackReference
+    @EqualsAndHashCode.Exclude
+    private Set<Shift> activities = new HashSet<>();
 
 }
