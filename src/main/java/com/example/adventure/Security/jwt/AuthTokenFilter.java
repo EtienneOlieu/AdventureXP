@@ -1,5 +1,5 @@
-package com.example.adventure.Security.jwt;
-
+//package com.example.adventure.Security.jwt;
+/*
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -58,4 +58,4 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         String jwt = jwtUtils.getJwtFromCookies(request);
         return jwt;
     }
-}
+}*/

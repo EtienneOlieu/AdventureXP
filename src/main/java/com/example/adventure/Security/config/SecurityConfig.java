@@ -1,6 +1,6 @@
-package com.example.adventure.Security.config;
-import com.example.adventure.Security.jwt.AuthEntryPointJwt;
-import com.example.adventure.Security.jwt.AuthTokenFilter;
+//package com.example.adventure.Security.config;
+//import com.example.adventure.Security.jwt.AuthEntryPointJwt;
+//import com.example.adventure.Security.jwt.AuthTokenFilter;
 import com.example.adventure.service.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
+/*
 @AllArgsConstructor
 @Configuration
 @EnableWebSecurity
@@ -92,4 +92,4 @@ UserDetailsServiceImpl userDetailsService;
 //                .build();
 //        return new InMemoryUserDetailsManager(adminUser);
 //    }
-}
+}*/
