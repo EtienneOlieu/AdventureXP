@@ -28,9 +28,4 @@ public class Activity {
     @EqualsAndHashCode.Exclude
     private Requirement requirement;
 
-    @OneToMany (mappedBy = "activity")
-    @JsonBackReference
-    @EqualsAndHashCode.Exclude
-    private Set<Shift> activities = new HashSet<>();
-
 }

@@ -14,12 +14,11 @@ import java.util.Date;
 
 @Data
 @ToString
-public class ShiftAndActivity {
+public class ShiftAndActivityRequest {
     private String employeeName;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime startTime;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime  endTime;
-    private Long activityId;
-
+    private String activityDescription;
 }

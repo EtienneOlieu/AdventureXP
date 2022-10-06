@@ -24,11 +24,7 @@ public class Shift {
     private LocalDateTime startTime;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime  endTime;
-
-    @ManyToOne
-    @JsonBackReference
-    @EqualsAndHashCode.Exclude
-    private Activity activity;
+    private String activityDescription;
 
 
 }
