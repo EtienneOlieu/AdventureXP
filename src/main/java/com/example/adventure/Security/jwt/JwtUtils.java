@@ -1,4 +1,6 @@
-package com.example.adventure.Security.jwt;
+
+
+//package com.example.adventure.Security.jwt;
 
 import com.example.adventure.service.UserDetailsImpl;
 import java.util.Date;
@@ -13,8 +15,8 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
-import io.jsonwebtoken.*;
-
+//import io.jsonwebtoken.*;
+/*
 @Component
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
@@ -77,4 +79,4 @@ public class JwtUtils {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
-}
+}*/

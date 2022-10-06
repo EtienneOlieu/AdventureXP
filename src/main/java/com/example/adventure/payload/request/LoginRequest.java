@@ -1,7 +1,7 @@
-package com.example.adventure.payload.request;
+//package com.example.adventure.payload.request;
 
-import javax.validation.constraints.NotBlank;
-
+//import javax.validation.constraints.NotBlank;
+/*
 public class LoginRequest {
     @NotBlank
     private String username;
@@ -24,4 +24,4 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-}
+}*/

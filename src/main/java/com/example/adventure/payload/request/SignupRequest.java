@@ -1,9 +1,9 @@
-package com.example.adventure.payload.request;
+//package com.example.adventure.payload.request;
 
-import java.util.Set;
+//import java.util.Set;
 
-import javax.validation.constraints.*;
-
+//import javax.validation.constraints.*;
+/*
 public class SignupRequest {
     @NotBlank
     @Size(min = 3, max = 20)
@@ -62,5 +62,5 @@ public class SignupRequest {
         this.role = role;
     }
 
-     */
-}
+
+}*/
