@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,13 +55,9 @@ public class ActivityController {
         return new ResponseEntity<>(savedActivity, HttpStatus.OK);
     }
 
-/*    @GetMapping
-    public ResponseEntity<Set<Activity>> getAllActivities(){
-        Set allActivities = activityJPA.findAll();
-        return new ResponseEntity<>(allActivities, HttpStatus.OK);
-    }*/
-
+    @PermitAll
     @GetMapping
+    @CrossOrigin
     public ResponseEntity<List<ActivityAndRequirement>> getAllActivities(){
         Set<Activity> allActivities = activityJPA.findAll();
         List<ActivityAndRequirement> activityAndRequirements = new ArrayList<>();
@@ -91,11 +88,14 @@ public class ActivityController {
     @GetMapping("/{id}")
     @CrossOrigin
     public ResponseEntity<ActivityAndRequirement> getActivityById(@PathVariable Long id){
+
         Optional<Activity> activity = activityJPA.findById(id);
         Long activityId = activity.get().getRequirement().getId();
         Optional<Requirement> requirement = requirementJPA.findById(activityId);
         ActivityAndRequirement activityAndRequirement = new ActivityAndRequirement();
-        activityAndRequirement.setActivityId(activity.get().getId());
+
+        //activityAndRequirement.setActivityId(activity.get().getId());
+        activityAndRequirement.setActivityId(id);
         activityAndRequirement.setName(activity.get().getName());
         activityAndRequirement.setDescription(activity.get().getDescription());
         activityAndRequirement.setPrice(activity.get().getPrice());
@@ -118,7 +118,7 @@ public class ActivityController {
         @PutMapping()
         @CrossOrigin
         public ResponseEntity<?> updateActivity(@RequestBody ActivityAndRequirement activityAndRequirement){
-            long activityId = activityAndRequirement.getActivityId().longValue();
+            Long activityId = activityAndRequirement.getActivityId().longValue();
             Optional<Activity> activity3 = activityJPA.findById(activityId);
             Optional<Activity> activityToUpdate = activityJPA.findById(activityId);
             Optional<Requirement> requirementToUpdate = requirementJPA.findById(activityAndRequirement.getRequirementId());
@@ -156,9 +156,10 @@ public class ActivityController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteActivity(@PathVariable Long id){
+    @CrossOrigin
+    public ResponseEntity<?> deleteActivity(@PathVariable Long id){
         activityJPA.deleteById(id);
-        return new ResponseEntity<>("Aktivitet med id " + id + " blev slettet", HttpStatus.OK);
+        return new ResponseEntity<>(new Activity(), HttpStatus.OK);
     }
 
 }
