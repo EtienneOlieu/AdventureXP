@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@Table(name = "Requirements")
+@Table(name = "Requirement")
 // Alt udkommenteret kode er til senere udvidelse af db
 //@SecondaryTable(name = "Req_age", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))
 //@SecondaryTable(name = "Req_height", pkJoinColumns = @PrimaryKeyJoinColumn(name = "req_id"))

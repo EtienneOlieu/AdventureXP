@@ -6,15 +6,19 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class Equipment {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public Equipment(){
+    public Product(){
 
     }
     @Column
     public String name;
+
+    @Column
+    public double price;
+
 }
