@@ -26,10 +26,11 @@ public class Event {
 
 	String medarbejder;
 
+
 	@ManyToOne()
-	@JsonBackReference
+	//@JsonBackReference
 	@EqualsAndHashCode.Exclude
-	private Activity activity;
+	Activity activity;
 
 	public Long getId() {
 		return id;
@@ -74,4 +75,14 @@ public class Event {
 	public void setMedarbejder(String medarbejder) {
 		this.medarbejder = medarbejder;
 	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+
 }
