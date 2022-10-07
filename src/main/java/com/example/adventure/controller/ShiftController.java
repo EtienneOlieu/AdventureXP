@@ -5,6 +5,7 @@ import com.example.adventure.service.ActivityService;
 import com.example.adventure.service.ShiftService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.PermitAll;
@@ -63,9 +64,16 @@ public class ShiftController {
         return new ResponseEntity<>(new Shift(), HttpStatus.OK);
     }
 
+    @PermitAll
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteShift(){
-        return new ResponseEntity<>(HttpStatus.OK);
+    @CrossOrigin
+    public ResponseEntity<?> deleteShift(@PathVariable Long id){
+        Optional<Shift> shiftToDelete = shiftService.findById(id);
+        if (shiftToDelete.isPresent()){
+            shiftService.deleteById(id);
+            return new ResponseEntity<>(new Shift(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new Shift(), HttpStatus.BAD_REQUEST);
     }
 
     @PermitAll
