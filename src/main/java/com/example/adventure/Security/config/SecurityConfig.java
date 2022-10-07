@@ -1,6 +1,6 @@
-//package com.example.adventure.Security.config;
-//import com.example.adventure.Security.jwt.AuthEntryPointJwt;
-//import com.example.adventure.Security.jwt.AuthTokenFilter;
+package com.example.adventure.Security.config;
+import com.example.adventure.Security.jwt.AuthEntryPointJwt;
+import com.example.adventure.Security.jwt.AuthTokenFilter;
 import com.example.adventure.service.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-/*
+
 @AllArgsConstructor
 @Configuration
 @EnableWebSecurity
@@ -62,34 +62,34 @@ UserDetailsServiceImpl userDetailsService;
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
-//    private final PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http
-//                .authorizeHttpRequests()
-//                .antMatchers("/css/*", "/images/*", "/js/*")
-//                .permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/")
-//                .permitAll()
-//                //Husk at sætte vores landingpage på!
-//                .defaultSuccessUrl("/navigation")
-//                .failureUrl("/error");
-//
-//    }
-//
-//    @Override
-//    @Bean
-//    protected UserDetailsService userDetailsService() {
-//        UserDetails adminUser = User.builder()
-//                .username("admin")
-//                .password(encoder.encode("admin"))
-//                .roles("ADMIN")
-//                .build();
-//        return new InMemoryUserDetailsManager(adminUser);
-//    }
-}*/
+    /*@Override
+    protected void configure(HttpSecurity http) throws Exception{
+        http
+                .authorizeHttpRequests()
+                .antMatchers("/css/*", "/images/*", "/js/*")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/")
+               .permitAll()
+                //Husk at sætte vores landingpage på!
+                .defaultSuccessUrl("/navigation")
+                .failureUrl("/error");
+
+    }*/
+
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService() {
+        UserDetails adminUser = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(adminUser);
+    }
+}

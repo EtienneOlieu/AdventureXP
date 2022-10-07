@@ -1,5 +1,5 @@
-//package com.example.adventure.service;
-/*
+package com.example.adventure.service;
+
 import com.example.adventure.model.User;
 import com.example.adventure.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -42,4 +42,4 @@ public class UserJPA implements UserService {
     public Optional<User> findById(Long aLong){
         return userRepository.findById(aLong);
     }
-}*/
+}
