@@ -62,34 +62,34 @@ UserDetailsServiceImpl userDetailsService;
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
-//    private final PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http
-//                .authorizeHttpRequests()
-//                .antMatchers("/css/*", "/images/*", "/js/*")
-//                .permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/")
-//                .permitAll()
-//                //Husk at sætte vores landingpage på!
-//                .defaultSuccessUrl("/navigation")
-//                .failureUrl("/error");
-//
-//    }
-//
-//    @Override
-//    @Bean
-//    protected UserDetailsService userDetailsService() {
-//        UserDetails adminUser = User.builder()
-//                .username("admin")
-//                .password(encoder.encode("admin"))
-//                .roles("ADMIN")
-//                .build();
-//        return new InMemoryUserDetailsManager(adminUser);
-//    }
+    /*@Override
+    protected void configure(HttpSecurity http) throws Exception{
+        http
+                .authorizeHttpRequests()
+                .antMatchers("/css/*", "/images/*", "/js/*")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/")
+               .permitAll()
+                //Husk at sætte vores landingpage på!
+                .defaultSuccessUrl("/navigation")
+                .failureUrl("/error");
+
+    }*/
+
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService() {
+        UserDetails adminUser = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(adminUser);
+    }
 }

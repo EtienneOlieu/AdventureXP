@@ -1,5 +1,5 @@
-package com.example.adventure.controller;
-
+//package com.example.adventure.controller;
+/*
 import com.example.adventure.Security.jwt.JwtUtils;
 import com.example.adventure.model.ERole;
 import com.example.adventure.model.Role;
@@ -141,11 +141,11 @@ public class AuthController {
 //             */
 //        }
 //    }
-
+/*
     @PostMapping("/signout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You've been signed out!"));
     }
-}
+}*/

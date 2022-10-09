@@ -1,7 +1,7 @@
-package com.example.adventure.payload.response;
+//package com.example.adventure.payload.response;
 
 import java.util.List;
-
+/*
 public class UserInfoResponse {
     private Long id;
     private String username;
@@ -42,4 +42,4 @@ public class UserInfoResponse {
     public List<String> getRoles() {
         return roles;
     }
-}
+}*/

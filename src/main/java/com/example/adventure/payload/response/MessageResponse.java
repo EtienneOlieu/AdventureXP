@@ -1,5 +1,5 @@
-package com.example.adventure.payload.response;
-
+//package com.example.adventure.payload.response;
+/*
 public class MessageResponse {
     private String message;
 
@@ -14,5 +14,5 @@ public class MessageResponse {
     public void setMessage(String message) {
         this.message = message;
     }
-}
+}*/
 
