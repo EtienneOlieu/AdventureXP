@@ -1,6 +1,6 @@
-//package com.example.adventure.payload.request;
+package com.example.adventure.payload.request;
 
-//import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 /*
 public class LoginRequest {
     @NotBlank
