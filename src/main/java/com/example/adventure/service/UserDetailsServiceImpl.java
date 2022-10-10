@@ -1,5 +1,5 @@
-//package com.example.adventure.service;
-/*
+package com.example.adventure.service;
+
 import com.example.adventure.model.User;
 import com.example.adventure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +23,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         return UserDetailsImpl.build(user);
     }
-}*/
+}

@@ -1,6 +1,6 @@
-//package com.example.adventure.Security.jwt;
+package com.example.adventure.Security.jwt;
 
-/*
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,4 +40,4 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(response.getOutputStream(), body);
     }
-}*/
+}

@@ -1,5 +1,5 @@
-//package com.example.adventure.model;
-/*
+package com.example.adventure.model;
+
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
@@ -81,7 +81,7 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-}*/
+}
 
 
 

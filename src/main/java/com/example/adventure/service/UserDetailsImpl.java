@@ -1,5 +1,5 @@
-//package com.example.adventure.service;
-/*
+package com.example.adventure.service;
+
 import com.example.adventure.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -99,4 +99,4 @@ public class UserDetailsImpl implements UserDetails {
         UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
     }
-}*/
+}
