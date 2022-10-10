@@ -32,6 +32,11 @@ public class ShiftController {
         return new ResponseEntity<>(shiftService.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * Get a shift by Id
+     * @param id
+     * @return
+     */
     @PermitAll
     @GetMapping("/{id}")
     @CrossOrigin
